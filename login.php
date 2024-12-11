@@ -7,10 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = "";
     $dbname = "lab_5b";
 
-    // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -22,13 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // Authentication successful
         $_SESSION['loggedin'] = true;
         $_SESSION['matric'] = $matric;
         header("Location: display.php");
         exit();
     } else {
-        // Authentication failed
         $error_message = "Invalid matric or password, try <a href='login.php'>login</a> again.";
     }
 

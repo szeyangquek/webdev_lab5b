@@ -27,10 +27,8 @@ if (!isset($_SESSION['loggedin'])) {
             $password = "";
             $dbname = "lab_5b";
 
-            // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Check connection
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
@@ -40,7 +38,6 @@ if (!isset($_SESSION['loggedin'])) {
 
             if ($result) {
                 if ($result->num_rows > 0) {
-                    // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
                                 <td>" . $row["matric"] . "</td>
